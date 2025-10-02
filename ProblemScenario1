@@ -1,0 +1,35 @@
+def flames_game(name1, name2):
+
+  name1 = name1.replace(" ", "").lower()
+  name2 = name2.replace(" ", "").lower()
+
+  list1 = list(name1)
+  list2 = list(name2)
+
+  for char in name1:
+
+    if char in list2:
+
+      list1.remove(char)
+      list2.remove(char)
+
+  total = len(list1) + len(list2)
+
+  if total == 0:
+    return "Not compatible! Single forever </3"
+
+  flames = ["Friendship", "Love", "Affection", "Marriage", "Enemy", "Sister(Sibling)"]
+
+  index = 0
+  while len(flames) > 1:
+    index = (index + total - 1) % len(flames)
+    flames.pop(index)
+    
+  return flames[0]
+print("The Mating Game")
+name1 = input("Your Name        : ")
+name2 = input("Crush Name       : ")
+
+result = flames_game(name1, name2)
+
+print("Relationship     :", result)
